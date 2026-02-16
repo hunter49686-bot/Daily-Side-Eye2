@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SIDE-EYE • News With Attitude</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: #f8f5f0;
+            color: #1a1a1a;
+            line-height: 1.5;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 4px double #1a1a1a;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .logo {
+            font-size: 52px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .emoji {
+            font-size: 42px;
+            display: inline-block;
+            margin-left: 10px;
+            animation: sideeye 3s ease-in-out infinite;
+        }
+
+        @keyframes sideeye {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-8px); }
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        .meta-bar {
+            background: #1a1a1a;
+            color: #f8f5f0;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .last-update {
+            color: #4ade80;
+        }
+
+        .snark-meter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .snark-level {
+            color: #fbbf24;
+        }
+
+        .commentary-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            margin-bottom: 25px;
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.6;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+
+        .commentary-label {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 10px;
+            font-style: normal;
+        }
+
+        .main-headline {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 3px solid #1a1a1a;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.1);
+        }
+
+        .main-headline h1 {
+            font-size: 38px;
+            font-family: Georgia, serif;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .main-headline a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .main-headline a:hover {
+            color: #dc2626;
+        }
+
+        .source-tag {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .source-tag.left {
+            background: #3b82f6;
+        }
+
+        .source-tag.right {
+            background: #dc2626;
+        }
+
+        .source-tag.center {
+            background: #8b5cf6;
+        }
+
+        .snark-tag {
+            display: inline-block;
+            background: #fbbf24;
+            color: #1a1a1a;
+            padding: 4px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .grid-sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .news-section {
+            background: #fff;
+            padding: 25px;
+            border: 2px solid #1a1a1a;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a1a1a;
+            font-family: 'Courier New', monospace;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-item h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-family: Georgia, serif;
+            line-height: 1.3;
+        }
+
+        .news-item h3 a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .news-item h3 a:hover {
+            color: #dc2626;
+        }
+
+        .news-meta {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .snark-comment {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            padding-left: 15px;
+            border-left: 3px solid #fbbf24;
+            font-family: Georgia, serif;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1a1a1a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 4px double #1a1a1a;
+            margin-top: 40px;
+            font-size: 11px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .grid-sections {
+                grid-template-columns: 1fr;
+            }
+            .logo {
+                font-size: 36px;
+            }
+            .main-headline h1 {
+                font-size: 26px;
+            }
+        }
+
+        .error-message {
+            background: #fee2e2;
+            border: 2px solid #dc2626;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">THE SIDE-EYE<span class="emoji">👀</span></div>
+            <div class="tagline">News • Balanced • With Attitude</div>
+        </header>
+
+        <div class="meta-bar">
+            <div class="last-update">Last Updated: <span id="timestamp">Loading...</span></div>
+            <div class="snark-meter">
+                <span>Snark Level:</span>
+                <span class="snark-level">🔥🔥🔥</span>
+            </div>
+        </div>
+
+        <div class="commentary-box">
+            <div class="commentary-label">📝 Editor's Take</div>
+            <div id="commentary">Loading today's commentary...</div>
+        </div>
+
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <div>Fetching the latest news (and preparing the side-eye)...</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2026 THE SIDE-EYE • Where News Meets Reality Checks<br>
+            <small style="margin-top: 10px; display: block;">Sources balanced across the political spectrum • Updated automatically every hour</small>
+        </div>
+    </div>
+
+    <script>
+        // NEWS API CONFIGURATION
+        const NEWS_API_KEY = 'a0bb0e74aeb546a2b61cca7da1a05152'; // Get free key from newsapi.org
+        
+        // Balanced news sources - mix of left, right, and center
+        const SOURCES = {
+            left: ['msnbc', 'cnn', 'huffington-post', 'the-washington-post'],
+            center: ['reuters', 'associated-press', 'bbc-news', 'axios'],
+            right: ['fox-news', 'the-wall-street-journal', 'national-review', 'the-hill']
+        };
+
+        // Snarky commentary templates
+        const COMMENTARIES = [
+            "Another day, another headline that makes you wonder if we're living in a simulation. Buckle up.",
+            "Today's news: because reality wasn't strange enough already. Let's dive in.",
+            "Breaking news: the world is still spinning, somehow. Here's what you missed.",
+            "Welcome to today's edition of 'You Can't Make This Up.' Spoiler: we didn't.",
+            "The headlines are in, and they're exactly as weird as you'd expect. Enjoy.",
+            "Today's news brought to you by the concept of 'truth is stranger than fiction.'",
+            "Another 24 hours, another collection of headlines that would make great satire if they weren't real.",
+            "Let's see what made the news today, shall we? *adjusts glasses skeptically*"
+        ];
+
+        // Snarky comment generators
+        const SNARK_TEMPLATES = [
+            "Sure, that'll definitely work out perfectly. 🙄",
+            "Shocking absolutely no one who's been paying attention.",
+            "And in other news, water is wet.",
+            "Well, that escalated... exactly as predicted.",
+            "File this under 'Things We Definitely Needed.'",
+            "Bold move. Let's see how that plays out.",
+            "What could possibly go wrong? *narrator: everything*",
+            "Finally, someone asking the real questions.",
+            "This seems completely normal and not at all concerning.",
+            "A surprise to no one except apparently the people involved."
+        ];
+
+        function getRandomSnark() {
+            return SNARK_TEMPLATES[Math.floor(Math.random() * SNARK_TEMPLATES.length)];
+        }
+
+        function getSourceBias(source) {
+            if (SOURCES.left.includes(source)) return 'left';
+            if (SOURCES.right.includes(source)) return 'right';
+            return 'center';
+        }
+
+        function updateTimestamp() {
+            const now = new Date();
+            document.getElementById('timestamp').textContent = now.toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            });
+        }
+
+        async function fetchNews() {
+            try {
+                // Fetch from multiple sources to ensure balance
+                const allSources = [...SOURCES.left, ...SOURCES.center, ...SOURCES.right].join(',');
+                
+                const response = await fetch(
+                    `https://newsapi.org/v2/top-headlines?sources=${allSources}&pageSize=100&apiKey=${NEWS_API_KEY}`
+                );
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch news');
+                }
+
+                const data = await response.json();
+                
+                if (data.status === 'error') {
+                    throw new Error(data.message);
+                }
+
+                displayNews(data.articles);
+                
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                displayError(error.message);
+            }
+        }
+
+        function displayNews(articles) {
+            updateTimestamp();
+            
+            // Set random commentary
+            const commentary = COMMENTARIES[Math.floor(Math.random() * COMMENTARIES.length)];
+            document.getElementById('commentary').textContent = commentary;
+
+            // Sort articles by source to ensure balance
+            const categorized = {
+                left: articles.filter(a => getSourceBias(a.source.id) === 'left'),
+                center: articles.filter(a => getSourceBias(a.source.id) === 'center'),
+                right: articles.filter(a => getSourceBias(a.source.id) === 'right')
+            };
+
+            // Build HTML
+            let html = '';
+
+            // Main headline (from center source for neutrality)
+            if (categorized.center.length > 0) {
+                const mainStory = categorized.center[0];
+                html += `
+                    <div class="main-headline">
+                        <h1><a href="${mainStory.url}" target="_blank">${mainStory.title}</a></h1>
+                        <div>
+                            <span class="source-tag center">${mainStory.source.name}</span>
+                            <span class="snark-tag">👀 Worth the side-eye</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Grid sections
+            html += '<div class="grid-sections">';
+
+            // Politics section (balanced mix)
+            html += '<div class="news-section"><div class="section-title">🏛️ Politics</div>';
+            const politicsArticles = [...categorized.left.slice(0, 2), ...categorized.right.slice(0, 2)];
+            politicsArticles.forEach(article => {
+                const bias = getSourceBias(article.source.id);
+                html += `
+                    <div class="news-item">
+                        <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                        <div class="news-meta">
+                            <span class="source-tag ${bias}">${article.source.name}</span>
+                            <span>${new Date(article.publishedAt).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'})}</span>
+                        </div>
+                        <div class="snark-comment">${getRandomSnark()}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            // World section
+            html += '<div class="news-section"><div class="section-title">🌍 World</div>';
+            categorized.center.slice(1, 5).forEach(article => {
+                html += `
+                    <div class="news-item">
+                        <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                        <div class="news-meta">
+                            <span class="source-tag center">${article.source.name}</span>
+                            <span>${new Date(article.publishedAt).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'})}</span>
+                        </div>
+                        <div class="snark-comment">${getRandomSnark()}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            // Business section
+            html += '<div class="news-section"><div class="section-title">💼 Business</div>';
+            [...categorized.center.slice(5, 7), ...categorized.right.slice(2, 4)].forEach(article => {
+                html += `
+                    <div class="news-item">
+                        <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                        <div class="news-meta">
+                            <span class="source-tag ${getSourceBias(article.source.id)}">${article.source.name}</span>
+                            <span>${new Date(article.publishedAt).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'})}</span>
+                        </div>
+                        <div class="snark-comment">${getRandomSnark()}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            // Technology section  
+            html += '<div class="news-section"><div class="section-title">💻 Technology</div>';
+            categorized.left.slice(2, 6).forEach(article => {
+                html += `
+                    <div class="news-item">
+                        <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                        <div class="news-meta">
+                            <span class="source-tag left">${article.source.name}</span>
+                            <span>${new Date(article.publishedAt).toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'})}</span>
+                        </div>
+                        <div class="snark-comment">${getRandomSnark()}</div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            html += '</div>'; // Close grid
+
+            document.getElementById('content').innerHTML = html;
+        }
+
+        function displayError(message) {
+            const html = `
+                <div class="error-message">
+                    <h2>🚨 News Fetch Failed</h2>
+                    <p>${message}</p>
+                    <p><strong>Note:</strong> You need to add your NewsAPI key to make this work!</p>
+                    <p>Get a free API key at <a href="https://newsapi.org" target="_blank">newsapi.org</a></p>
+                    <p>Then replace 'YOUR_API_KEY_HERE' in the code with your actual key.</p>
+                </div>
+            `;
+            document.getElementById('content').innerHTML = html;
+        }
+
+        // Initial load
+        fetchNews();
+
+        // Auto-refresh every hour
+        setInterval(fetchNews, 60 * 60 * 1000);
+    </script>
+</body>
+</html>
